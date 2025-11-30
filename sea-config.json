@@ -1,0 +1,5 @@
+{
+    "main": "dist/run.cjs",
+    "output": "build/blob.blob",
+    "disableExperimentalSEAWarning": true
+}

@@ -1,0 +1,30 @@
+{
+  "name": "stay-connected",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "vite build",
+    "pack": "vite build && rm -rf build && mkdir build && node --experimental-sea-config sea-config.json && cp $(command -v node) build/application && npx -y postject build/application NODE_SEA_BLOB build/blob.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajwdmedia/stay-connected.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ajwdmedia/stay-connected/issues"
+  },
+  "homepage": "https://github.com/ajwdmedia/stay-connected#readme",
+  "type": "module",
+  "dependencies": {
+    "node-cron": "^4.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "rollup-plugin-node-externals": "^8.1.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.4"
+  }
+}
