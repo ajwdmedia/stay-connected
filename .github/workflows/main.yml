@@ -1,0 +1,29 @@
+name: Build System
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build_and_deploy:
+    strategy:
+      matrix:
+        os: [ ubuntu-24.04, ubuntu-24.04-arm ]
+    name: Build and Deploy
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout
+      - uses: actions/setup-node@v4
+        name: Setup Node
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org/
+      - run: npm install
+        name: Install Deps
+      - run: npm run pack
+        name: Package
+      - run: gh release upload ${{ github.event.release.tag_name }} build/connector-$(dpkg-architecture -q DEB_BUILD_ARCH)
+        name: Upload Artifact
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
