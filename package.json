@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "vite build",
-    "pack": "vite build && rm -rf build && mkdir build && node --experimental-sea-config sea-config.json && cp $(command -v node) build/application && npx -y postject build/application NODE_SEA_BLOB build/blob.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2"
+    "pack": "vite build && rm -rf build && mkdir build && node --experimental-sea-config sea-config.json && cp $(command -v node) build/application && npx -y postject build/application NODE_SEA_BLOB build/blob.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2 && mv build/application build/connector-$(dpkg-architecture -q DEB_BUILD_ARCH)"
   },
   "repository": {
     "type": "git",
